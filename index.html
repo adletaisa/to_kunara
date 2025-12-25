@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Только для тебя 💕</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: url("4.jpg") no-repeat center center/cover;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+/* затемнение */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+/* карточка */
+.card {
+    padding: 35px;
+    border-radius: 25px;
+    background: rgba(0,0,0,0.55);
+    animation: fadeIn 2s ease;
+    min-width: 300px;
+}
+
+/* скрываемый блок */
+.fade {
+    animation: fadeOut 0.8s ease forwards;
+}
+
+/* новый текст */
+.new-text {
+    animation: fadeIn 1.5s ease;
+    font-size: 22px;
+    color: #ffd6e0;
+}
+
+h1 {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 18px;
+}
+
+/* кнопки */
+button {
+    margin-top: 18px;
+    padding: 14px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    background: #ff4d6d;
+    color: white;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background: #ff1e4d;
+}
+
+/* анимации */
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes fadeOut {
+    to {opacity: 0; transform: translateY(-10px);}
+}
+
+/* сердечки */
+.heart {
+    position: absolute;
+    top: -20px;
+    color: pink;
+    font-size: 20px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+    <div class="card" id="card">
+
+        <!-- СТАРЫЙ КОНТЕНТ -->
+        <div id="oldContent">
+            <h1>Bonjour 💕</h1>
+            <p>Это приглашение только для тебя одной, Кунара)</p>
+            <p><b>Ты пойдёшь со мной на свидание 29 декабря?🌹</b></p>
+	    <p><b>Дресс код: Хорошое настроение 😉</b></p>
+	    <p><b>Время я тебе напишу)</b></p>
+
+            <button id="musicBtn" onclick="startMusic()">Включить музыку 🎵</button>
+            <br>
+            <button onclick="acceptDate()">Да 💖</button>
+        </div>
+
+</div>
+
+<audio id="music" loop>
+    <source src="3.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function startMusic() {
+    const music = document.getElementById("music");
+    music.play();
+    document.getElementById("musicBtn").style.display = "none";
+}
+
+/* сердечки */
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💗";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}, 300);
+
+/* кнопка Да */
+function acceptDate() {
+    const oldContent = document.getElementById("oldContent");
+    const newContent = document.getElementById("newContent");
+
+    oldContent.classList.add("fade");
+
+    setTimeout(() => {
+        oldContent.style.display = "none";
+        newContent.classList.remove("hidden");
+
+        setTimeout(() => {
+            alert("Я счастлив 😍 Напишу тебе!");
+            window.location.href = "https://wa.me/7762360330";
+        }, 1500);
+
+    }, 800);
+}
+</script>
+
+</body>
+</html>
