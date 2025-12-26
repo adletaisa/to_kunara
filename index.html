@@ -108,10 +108,7 @@ button:hover {
 
 <div class="overlay">
 
-    <div class="card" id="card">
-
-        <!-- СТАРЫЙ КОНТЕНТ -->
-        <div id="oldContent">
+    <div class="card">
             <h1>Bonjour 💕</h1>
             <p>Это приглашение только для тебя одной, Кунара)</p>
             <p><b>Ты пойдёшь со мной на свидание 29 декабря?🌹</b></p>
@@ -122,7 +119,6 @@ button:hover {
             <br>
             <button onclick="acceptDate()">Да 💖</button>
         </div>
-
 </div>
 
 <audio id="music" loop>
@@ -150,21 +146,8 @@ setInterval(() => {
 
 /* кнопка Да */
 function acceptDate() {
-    const oldContent = document.getElementById("oldContent");
-    const newContent = document.getElementById("newContent");
-
-    oldContent.classList.add("fade");
-
-    setTimeout(() => {
-        oldContent.style.display = "none";
-        newContent.classList.remove("hidden");
-
-        setTimeout(() => {
-            alert("Я счастлив 😍 Напишу тебе!");
-            window.location.href = "https://wa.me/7762360330";
-        }, 1500);
-
-    }, 800);
+    alert("Я счастлив 😍 Напиши 29 мне, чтобы я понял)");
+    window.location.href = "https://wa.me/7762360330";
 }
 </script>
 
